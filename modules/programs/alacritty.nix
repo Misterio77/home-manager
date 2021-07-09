@@ -57,6 +57,9 @@ in {
 
         text =
           replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON cfg.settings);
+        onChange = ''
+          ${pkgs.procps}/bin/pkill -USR1 -u $USER alacritty || true
+        '';
       };
     })
   ];
